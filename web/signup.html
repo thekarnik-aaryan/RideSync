@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=overlays-content">
+  <title>Create account — RideSync</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/login.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-left"></i> Back to home</a>
+
+  <div class="auth-wrap">
+    <div class="auth-visual">
+      <div class="auth-glow a"></div>
+      <div class="auth-glow b"></div>
+      <div class="auth-brand">
+        <img src="assets/images/logo.svg" alt="RideSync">
+        <span>Ride<span style="background:linear-gradient(135deg,#22d3ee,#6366f1);-webkit-background-clip:text;background-clip:text;color:transparent">Sync</span></span>
+      </div>
+      <div class="auth-quote">
+        <h2>Rally your crew in minutes.</h2>
+        <p>Create your free account, spin up a group and share one code. Your whole convoy gets a live map, chat and shared trip space instantly.</p>
+        <div class="quote-stat">
+          <div><strong>45 sec</strong><span>avg. group setup</span></div>
+          <div><strong>12k+</strong><span>active groups</span></div>
+          <div><strong>100%</strong><span>free to start</span></div>
+        </div>
+      </div>
+      <div class="auth-anim" aria-hidden="true">
+        <svg class="route-svg" viewBox="0 0 560 320" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="routeGrad" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#22d3ee"/>
+              <stop offset="1" stop-color="#6366f1"/>
+            </linearGradient>
+          </defs>
+          <path id="routePathA" d="M24 300 C120 282 180 214 262 182 S430 150 540 116" fill="none" stroke="url(#routeGrad)" stroke-width="4" stroke-linecap="round" class="route-path"/>
+          <path id="routePathGhost" d="M24 300 C100 252 140 168 240 128 S436 96 540 60" fill="none" stroke="rgba(148,163,184,.45)" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 9" class="route-path ghost" style="animation-delay:-4.5s"/>
+          <circle cx="24" cy="300" r="6" fill="#22d3ee" class="pin-dot"/>
+          <circle cx="540" cy="116" r="6" fill="#f43f5e" class="pin-dot"/>
+          <circle cx="262" cy="182" r="10" class="pin-halo"/>
+          <circle cx="262" cy="182" r="10" class="pin-halo" style="animation-delay:-1.1s"/>
+          <circle cx="262" cy="182" r="5" fill="#fbbf24" class="pin-dot meet"/>
+          <g class="member-dot you-dot" data-name="You" data-role="Live location" data-status="Riding to the meet point" data-eta="Live · refreshing" data-color="#22d3ee">
+            <circle r="16" fill="transparent" class="hit"/>
+            <circle r="9" class="live-halo">
+              <animateMotion dur="8s" repeatCount="indefinite" begin="-2s">
+                <mpath href="#routePathA"/>
+              </animateMotion>
+            </circle>
+            <circle r="4" fill="#fff">
+              <animateMotion dur="8s" repeatCount="indefinite" begin="-2s">
+                <mpath href="#routePathA"/>
+              </animateMotion>
+            </circle>
+          </g>
+          <g class="member-dot" data-name="Aarav" data-role="Ride Lead" data-status="Heading to the meet point" data-eta="Arrives in ~8 min" data-color="#818cf8">
+            <circle r="16" fill="transparent" class="hit"/>
+            <circle r="7" fill="#818cf8"/>
+            <circle r="2.5" fill="#fff"/>
+            <animateMotion dur="8s" repeatCount="indefinite" begin="-1.5s"><mpath href="#routePathA"/></animateMotion>
+          </g>
+          <g class="member-dot" data-name="Megha" data-role="Member" data-status="On the road" data-eta="2.1 km away" data-color="#38bdf8">
+            <circle r="16" fill="transparent" class="hit"/>
+            <circle r="7" fill="#38bdf8"/>
+            <circle r="2.5" fill="#fff"/>
+            <animateMotion dur="8s" repeatCount="indefinite" begin="-4.5s"><mpath href="#routePathA"/></animateMotion>
+          </g>
+          <g class="member-dot" data-name="Rohan" data-role="Member" data-status="Reached the meet point" data-eta="Waiting for the convoy" data-color="#fb7185">
+            <circle r="16" fill="transparent" class="hit"/>
+            <circle r="7" fill="#fb7185"/>
+            <circle r="2.5" fill="#fff"/>
+            <animateMotion dur="11s" repeatCount="indefinite" begin="-3s"><mpath href="#routePathGhost"/></animateMotion>
+          </g>
+        </svg>
+        <div class="live-feed">
+          <div class="live-badge"><span class="live-dot"></span>LIVE</div>
+          <div class="feed-track">
+            <div class="feed-item"><strong>Aarav</strong> reached the meet point</div>
+            <div class="feed-item"><strong>Megha</strong> is 2.1 km away</div>
+            <div class="feed-item"><strong>Rohan</strong> joined the convoy</div>
+            <div class="feed-item"><strong>Kavya</strong> split the bill · ₹412</div>
+          </div>
+        </div>
+        <div class="float-dot d1"></div>
+        <div class="float-dot d2"></div>
+        <div class="float-dot d3"></div>
+        <div class="float-dot d4"></div>
+      </div>
+      <div class="rider-tip" id="riderTip" hidden>
+        <div class="rt-head">
+          <span class="rt-avatar">A</span>
+          <div><strong class="rt-name">Aarav</strong><span class="rt-role">Ride Lead</span></div>
+        </div>
+        <div class="rt-row"><i class="fa-solid fa-route"></i><span class="rt-status">Heading to the meet point</span></div>
+        <div class="rt-row"><i class="fa-solid fa-stopwatch"></i><span class="rt-eta">Arrives in ~8 min</span></div>
+      </div>
+      <div class="self-menu" id="selfMenu" hidden>
+        <div class="rt-head">
+          <span class="rt-avatar">Y</span>
+          <div><strong class="rt-name">You</strong><span class="rt-role">Live location</span></div>
+        </div>
+        <div class="sm-grid">
+          <a href="map.html" class="sm-item"><i class="fa-solid fa-map-location-dot"></i><span>Group Navigation</span></a>
+          <a href="emergency.html" class="sm-item sm-danger"><i class="fa-solid fa-siren"></i><span>Emergency Alert</span></a>
+          <a href="member-status.html" class="sm-item"><i class="fa-solid fa-users"></i><span>Member Status</span></a>
+          <a href="expenses.html" class="sm-item"><i class="fa-solid fa-wallet"></i><span>Expenses</span></a>
+          <a href="photo-drive.html" class="sm-item"><i class="fa-solid fa-camera"></i><span>Photo Drive</span></a>
+          <a href="chat.html" class="sm-item"><i class="fa-solid fa-comments"></i><span>Group Chat</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-form-side">
+      <div class="auth-card">
+        <div class="logo-mobile">
+          <img src="assets/images/logo.svg" alt="RideSync" style="width:46px;height:46px">
+        </div>
+        <div class="auth-head">
+          <h1>Create your account</h1>
+          <p>Free forever for riders. No card required.</p>
+        </div>
+        <form id="signupForm" novalidate>
+          <div class="field">
+            <label class="label" for="name">Full name</label>
+            <div class="input-icon">
+              <i class="fa-solid fa-user"></i>
+              <input class="input" type="text" id="name" placeholder="Alex Carter" autocomplete="name">
+            </div>
+            <p class="hint"></p>
+          </div>
+          <div class="field">
+            <label class="label" for="email">Email address</label>
+            <div class="input-icon">
+              <i class="fa-solid fa-envelope"></i>
+              <input class="input" type="email" id="email" placeholder="you@example.com" autocomplete="email">
+            </div>
+            <p class="hint"></p>
+          </div>
+          <div class="field">
+            <label class="label" for="password">Password</label>
+            <div class="input-group">
+              <input class="input" type="password" id="password" placeholder="At least 8 characters" autocomplete="new-password">
+              <button type="button" class="btn-icon btn-ghost" data-toggle-password="password"><i class="fa-solid fa-eye"></i></button>
+            </div>
+            <p class="hint"></p>
+          </div>
+          <div class="field">
+            <label class="label" for="password2">Confirm password</label>
+            <div class="input-group">
+              <input class="input" type="password" id="password2" placeholder="Repeat your password" autocomplete="new-password">
+              <button type="button" class="btn-icon btn-ghost" data-toggle-password="password2"><i class="fa-solid fa-eye"></i></button>
+            </div>
+            <p class="hint"></p>
+          </div>
+          <label class="checkbox-row" style="margin-bottom:20px">
+            <input type="checkbox" id="agree">
+            <span style="font-size:.85rem;color:var(--text-300)">I agree to the <a href="#" style="color:#a5b4fc">Terms</a> and <a href="#" style="color:#a5b4fc">Privacy Policy</a></span>
+          </label>
+          <button type="submit" class="btn btn-primary btn-block btn-lg btn-submit">Create account <i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+
+        <div class="auth-sep">or sign up with</div>
+        <button type="button" class="btn btn-social btn-block btn-lg" id="googleSignupBtn">
+          <i class="fa-brands fa-google"></i> Google
+        </button>
+
+        <div class="auth-sep">Already have an account?</div>
+        <a href="login.html" class="btn btn-outline btn-block btn-lg"><i class="fa-solid fa-right-to-bracket"></i> Sign in instead</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/firebase.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>

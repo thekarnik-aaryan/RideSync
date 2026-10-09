@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=overlays-content">
+  <title>SOS Emergency — RideSync</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div id="sidebar-root"></div>
+  <div class="app-wrap">
+    <div class="main">
+      <header id="topbar-root"></header>
+      <main class="content">
+        <div class="page-head">
+          <div>
+            <h1>SOS Emergency</h1>
+            <p>One tap alerts your whole group and emergency contacts with your live location.</p>
+          </div>
+          <a href="contacts.html" class="btn btn-outline"><i class="fa-solid fa-address-book"></i> Manage contacts</a>
+        </div>
+
+        <div class="grid-2">
+          <div class="card card-pad" style="text-align:center;padding:48px 24px">
+            <div class="alert alert-info" style="text-align:left"><i class="fa-solid fa-shield-halved"></i><div>Hold the button <strong>for 3 seconds</strong> to send an alert. This is not a call to emergency services.</div></div>
+            <div class="sos-ring">
+              <button class="sos-core" id="sosHold" style="border:none;cursor:pointer;outline:none" aria-label="SOS">
+                <i class="fa-solid fa-siren"></i>
+                <strong>SOS</strong>
+                <span>hold to alert</span>
+              </button>
+            </div>
+            <p class="small muted mt-24">Alert type:</p>
+            <div class="tabs" style="margin:10px auto 0">
+              <button class="tab active" data-sos-type="mechanical"><i class="fa-solid fa-wrench"></i> Mechanical</button>
+              <button class="tab" data-sos-type="medical"><i class="fa-solid fa-kit-medical"></i> Medical</button>
+              <button class="tab" data-sos-type="accident"><i class="fa-solid fa-car-burst"></i> Accident</button>
+              <button class="tab" data-sos-type="lost"><i class="fa-solid fa-compass"></i> Lost</button>
+            </div>
+            <div id="sosStatus" class="mt-24"></div>
+          </div>
+
+          <div>
+            <div class="card mb-16">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-bell" style="color:var(--danger)"></i> Alert history</h3>
+                <button class="btn btn-ghost btn-sm" id="clearAlerts"><i class="fa-solid fa-trash"></i> Clear</button>
+              </div>
+              <div class="card-body" id="alertsList" style="padding:8px 12px"></div>
+            </div>
+            <div class="card">
+              <div class="card-head"><h3><i class="fa-solid fa-circle-info" style="color:var(--accent)"></i> What happens when you hit SOS?</h3></div>
+              <div class="card-body">
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;font-size:.88rem;color:var(--text-300)">
+                  <li class="flex gap-12"><div class="icon-box icon-red" style="width:34px;height:34px;font-size:.85rem"><i class="fa-solid fa-location-dot"></i></div>Your live location is captured and attached to the alert.</li>
+                  <li class="flex gap-12"><div class="icon-box icon-amber" style="width:34px;height:34px;font-size:.85rem"><i class="fa-solid fa-users"></i></div>Every member of your active group is notified instantly.</li>
+                  <li class="flex gap-12"><div class="icon-box icon-green" style="width:34px;height:34px;font-size:.85rem"><i class="fa-solid fa-phone-volume"></i></div>Your saved emergency contacts outside the group get the alert too.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/firebase.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/emergency.js"></script>
+</body>
+</html>

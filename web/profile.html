@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=overlays-content">
+  <title>Profile — RideSync</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div id="sidebar-root"></div>
+  <div class="app-wrap">
+    <div class="main">
+      <header id="topbar-root"></header>
+      <main class="content">
+        <div class="page-head">
+          <div>
+            <h1>Your profile</h1>
+            <p>How your crew sees you.</p>
+          </div>
+        </div>
+
+        <div class="grid-2" style="max-width:900px">
+          <div class="card card-pad" style="text-align:center">
+            <label for="avatarInput" style="display:block;cursor:pointer;margin:0 auto 16px;width:72px;position:relative">
+              <div id="profileAvatar" class="avatar xl" style="background:var(--grad-accent)">?</div>
+              <div style="position:absolute;bottom:0;right:0;width:26px;height:26px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;border:2px solid #fff"><i class="fa-solid fa-camera" style="font-size:.65rem;color:#fff"></i></div>
+            </label>
+            <input type="file" id="avatarInput" accept="image/*" class="hidden">
+            <h2 id="profileName" style="font-size:1.2rem">…</h2>
+            <p class="small muted" id="profileEmail">…</p>
+            <div class="mt-16" style="display:flex;gap:10px;justify-content:center">
+              <div class="badge badge-green"><span class="badge-dot pulse-dot"></span>Member</div>
+              <div class="badge badge-blue">RideSync</div>
+            </div>
+            <div class="mt-24" style="background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:left">
+              <div class="flex-between" style="margin-bottom:10px">
+                <span class="small muted">Member since</span>
+                <span class="small" id="profileSince">—</span>
+              </div>
+              <div class="flex-between">
+                <span class="small muted">Groups</span>
+                <span class="small" id="profileGroups">—</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-pad">
+            <div class="card-title mb-16"><i class="fa-solid fa-pen-to-square"></i> Edit profile</div>
+            <form id="profileForm">
+              <div class="field">
+                <label class="label" for="pName">Full name</label>
+                <input class="input" type="text" id="pName">
+              </div>
+              <div class="field">
+                <label class="label" for="pPhone">Phone</label>
+                <div class="input-icon"><i class="fa-solid fa-phone"></i>
+                  <input class="input" type="tel" id="pPhone" placeholder="+91 98765 43210">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label" for="pBio">Bio</label>
+                <textarea class="textarea" id="pBio" placeholder="Tell your crew about yourself…" maxlength="160"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Save changes</button>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/firebase.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script>
+    (function () {
+      var A = window.RSApp;
+      A.requireAuth().then(function () {
+        return A.getProfile().then(function (u) {
+          A.renderShell("profile", "Profile");
+          if (!u) return;
+          document.getElementById("profileName").textContent = u.full_name || "Rider";
+          document.getElementById("profileEmail").textContent = u.email || "";
+          document.getElementById("profileAvatar").innerHTML = (u.avatar_url ? '<img src="' + A.escapeHtml(u.avatar_url) + '" alt="">' : A.initials(u.full_name));
+          document.getElementById("profileAvatar").style.background = A.avatarColor(u.full_name);
+          document.getElementById("pName").value = u.full_name || "";
+          document.getElementById("pPhone").value = u.phone || "";
+          document.getElementById("pBio").value = u.bio || "";
+          document.getElementById("profileSince").textContent = u.created_at ? new Date(u.created_at).toLocaleDateString([], { month: "long", year: "numeric" }) : "—";
+          return A.fetchGroups().then(function (gs) {
+            document.getElementById("profileGroups").textContent = gs.length + " group" + (gs.length === 1 ? "" : "s");
+          });
+        });
+      });
+      var form = document.getElementById("profileForm");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        A.uploadProfile({
+          full_name: document.getElementById("pName").value.trim() || "Rider",
+          phone: document.getElementById("pPhone").value.trim(),
+          bio: document.getElementById("pBio").value.trim()
+        }).then(function () {
+          A.toast("Profile updated.", "success");
+          setTimeout(function () { window.location.reload(); }, 800);
+        });
+      });
+      var avatarInput = document.getElementById("avatarInput");
+      avatarInput.addEventListener("change", function () {
+        var f = avatarInput.files[0];
+        if (!f) return;
+        if (!/image\//.test(f.type)) { A.toast("Please choose an image file.", "error"); return; }
+        A.toast("Uploading your photo…", "info");
+        A.uploadAvatar(f).then(function (url) {
+          document.getElementById("profileAvatar").innerHTML = '<img src="' + A.escapeHtml(url) + '" alt="">';
+          A.toast("Profile photo updated.", "success");
+        }).catch(function (err) {
+          A.toast((err && err.message) || "Photo upload failed.", "error");
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

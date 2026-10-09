@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=overlays-content">
+  <title>Expenses — RideSync</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div id="sidebar-root"></div>
+  <div class="app-wrap">
+    <div class="main">
+      <header id="topbar-root"></header>
+      <main class="content">
+        <div class="page-head">
+          <div>
+            <h1>Expenses</h1>
+            <p>Fuel, tolls, meals — tracked and ready to split.</p>
+          </div>
+          <button class="btn btn-primary" id="addExpenseBtn"><i class="fa-solid fa-plus"></i> Add expense</button>
+        </div>
+
+        <div id="expenseStats" class="grid-4">
+          <div class="card stat-card"><div class="icon-box icon-indigo skeleton" style="width:44px;height:44px"></div><div class="stat-info"><h4 class="skeleton" style="width:60px;height:24px"></h4><p>Total spent</p></div></div>
+          <div class="card stat-card"><div class="icon-box icon-amber skeleton" style="width:44px;height:44px"></div><div class="stat-info"><h4 class="skeleton" style="width:60px;height:24px"></h4><p>Per person</p></div></div>
+          <div class="card stat-card"><div class="icon-box icon-green skeleton" style="width:44px;height:44px"></div><div class="stat-info"><h4 class="skeleton" style="width:60px;height:24px"></h4><p>You owe</p></div></div>
+          <div class="card stat-card"><div class="icon-box icon-cyan skeleton" style="width:44px;height:44px"></div><div class="stat-info"><h4 class="skeleton" style="width:60px;height:24px"></h4><p>You're owed</p></div></div>
+        </div>
+
+        <div class="card mt-24">
+          <div class="card-head">
+            <h3><i class="fa-solid fa-wallet" style="color:var(--accent)"></i> Trip ledger</h3>
+            <div class="nav-pills">
+              <button class="nav-pill active" data-cat="all">All</button>
+              <button class="nav-pill" data-cat="Fuel">Fuel</button>
+              <button class="nav-pill" data-cat="Food">Food</button>
+              <button class="nav-pill" data-cat="Tolls">Tolls</button>
+              <button class="nav-pill" data-cat="Other">Other</button>
+            </div>
+          </div>
+          <div id="expenseList" style="padding:8px 12px"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-overlay hidden" id="expenseModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Add expense</h3>
+        <button class="btn btn-icon btn-ghost" id="expenseModalClose"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="expenseForm">
+        <div class="modal-body">
+          <div class="field">
+            <label class="label" for="eTitle">Description</label>
+            <input class="input" type="text" id="eTitle" placeholder="e.g. Fuel at Highway stop" maxlength="60">
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label class="label" for="eAmount">Amount</label>
+              <div class="input-icon"><i class="fa-solid fa-indian-rupee-sign"></i>
+                <input class="input" type="number" id="eAmount" placeholder="0.00" min="0" step="0.01">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="eCategory">Category</label>
+              <select class="select" id="eCategory">
+                <option>Fuel</option>
+                <option>Food</option>
+                <option>Tolls</option>
+                <option>Lodging</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="eSplit">How to split?</label>
+            <select class="select" id="eSplit">
+              <option value="equally">Split equally</option>
+              <option value="me">Just me</option>
+              <option value="manual">Manual</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-ghost" id="expenseCancel">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add expense</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/firebase.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/expenses.js"></script>
+</body>
+</html>

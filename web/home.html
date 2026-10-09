@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=overlays-content">
+  <title>Dashboard — RideSync</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div id="sidebar-root"></div>
+  <div class="app-wrap">
+    <div class="main">
+      <header id="topbar-root"></header>
+      <main class="content">
+        <div class="page-head">
+          <div>
+            <h1>Welcome back, <span id="userName" class="grad-text">rider</span> 👋</h1>
+            <p>Your convoys, at a glance.</p>
+          </div>
+          <div class="page-actions">
+            <a href="join-group.html" class="btn btn-outline"><i class="fa-solid fa-sign-in-alt"></i> Join group</a>
+            <a href="create-group.html" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Create group</a>
+          </div>
+        </div>
+
+        <div id="statsGrid" class="grid-4">
+          <div class="card stat-card"><div class="icon-box icon-indigo skeleton" style="width:52px;height:52px"></div><div class="stat-info"><h4 class="skeleton" style="width:44px;height:26px"></h4><p>Active groups</p></div></div>
+          <div class="card stat-card"><div class="icon-box icon-cyan skeleton" style="width:52px;height:52px"></div><div class="stat-info"><h4 class="skeleton" style="width:44px;height:26px"></h4><p>Members online</p></div></div>
+          <div class="card stat-card"><div class="icon-box icon-green skeleton" style="width:52px;height:52px"></div><div class="stat-info"><h4 class="skeleton" style="width:44px;height:26px"></h4><p>New messages</p></div></div>
+          <div class="card stat-card"><div class="icon-box icon-amber skeleton" style="width:52px;height:52px"></div><div class="stat-info"><h4 class="skeleton" style="width:44px;height:26px"></h4><p>Spent this trip</p></div></div>
+        </div>
+
+        <div class="grid-2-1 mt-24">
+          <div class="card">
+            <div class="card-head">
+              <h3><i class="fa-solid fa-users" style="color:var(--accent)"></i> My groups</h3>
+              <span id="groupCount" class="badge badge-gray">…</span>
+            </div>
+            <div class="card-body" id="groupsList"></div>
+          </div>
+
+          <div>
+            <div class="card">
+              <div class="card-head"><h3><i class="fa-solid fa-bolt" style="color:#fbbf24"></i> Quick actions</h3></div>
+              <div class="card-body" style="display:flex;flex-direction:column;gap:10px">
+                <a href="create-group.html" class="nav-pill"><i class="fa-solid fa-plus"></i> Create a new group</a>
+                <a href="join-group.html" class="nav-pill"><i class="fa-solid fa-right-to-bracket"></i> Join with a code</a>
+                <a href="map.html" class="nav-pill"><i class="fa-solid fa-map-location-dot"></i> Open live map</a>
+                <a href="emergency.html" class="nav-pill" style="border-color:rgba(248,113,113,.4);color:#fca5a5"><i class="fa-solid fa-siren"></i> Trigger SOS</a>
+              </div>
+            </div>
+            <div class="card mt-16">
+              <div class="card-head"><h3><i class="fa-solid fa-car" style="color:var(--success)"></i> Active ride</h3></div>
+              <div class="card-body">
+                <div id="activeRide"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/firebase.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

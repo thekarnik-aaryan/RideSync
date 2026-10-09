@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=overlays-content">
+  <title>Map &amp; Navigation — RideSync</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div id="sidebar-root"></div>
+  <div class="app-wrap">
+    <div class="main">
+      <header id="topbar-root"></header>
+      <main class="content" style="padding-top:18px">
+        <div class="page-head">
+          <div class="flex gap-12">
+            <div class="icon-box icon-cyan" style="width:48px;height:48px;font-size:1.15rem"><i class="fa-solid fa-map-location-dot"></i></div>
+            <div>
+              <h1>Map &amp; Navigation</h1>
+              <p id="mapSub">Loading…</p>
+            </div>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-outline" id="fitBtn"><i class="fa-solid fa-expand"></i> Fit group</button>
+            <button class="btn btn-success" id="goLiveBtn"><i class="fa-solid fa-location-arrow"></i> Go live</button>
+          </div>
+        </div>
+
+        <div class="map-shell">
+          <div class="map-stage">
+            <div id="map"></div>
+
+            <button class="map-dir-pill" id="dirToggle"><i class="fa-solid fa-route"></i> Directions</button>
+
+            <div class="dir-panel" id="dirPanel">
+              <div class="dir-head">
+                <strong><i class="fa-solid fa-route" style="color:var(--accent)"></i> Directions</strong>
+                <button class="dir-close" id="dirClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="field">
+                <div class="ac-wrap" id="fromWrap">
+                  <div class="input-icon"><i class="fa-solid fa-location-dot" style="color:var(--success)"></i>
+                    <input class="input" id="fromInput" placeholder="Current location" autocomplete="off">
+                  </div>
+                  <div class="ac-list" id="fromList"></div>
+                </div>
+              </div>
+              <div style="text-align:center;margin:-8px 0 12px">
+                <button class="btn btn-icon btn-ghost" id="swapBtn" title="Swap"><i class="fa-solid fa-arrow-down-up"></i></button>
+              </div>
+              <div class="field">
+                <div class="ac-wrap" id="toWrap">
+                  <div class="input-icon"><i class="fa-solid fa-flag-checkered" style="color:var(--danger)"></i>
+                    <input class="input" id="toInput" placeholder="Type a place to search…" autocomplete="off">
+                  </div>
+                  <div class="ac-list" id="toList"></div>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-block" id="calcBtn"><i class="fa-solid fa-magnifying-glass-location"></i> Plan route</button>
+              <button class="btn btn-success btn-block" id="startNavBtn" style="display:none"><i class="fa-solid fa-play"></i> Start navigation</button>
+              <div class="dir-live" id="navLiveBadge" style="display:none"></div>
+              <div class="dir-badges">
+                <span class="badge badge-cyan"><span class="badge-dot pulse-dot"></span><span id="navDist">--</span></span>
+                <span class="badge badge-green"><span id="navEta">--</span></span>
+              </div>
+              <div class="dir-list" id="turnList">
+                <div class="empty"><i class="fa-solid fa-route"></i><h4>No route planned</h4><p style="font-size:.85rem">Enter a destination and tap "Plan route".</p></div>
+              </div>
+            </div>
+
+            <div class="map-tracking" id="mapTracking" style="display:none">
+              <span><i class="fa-solid fa-crosshairs"></i> Tracking <strong id="trackName">--</strong></span>
+              <button id="stopTrackBtn">Stop</button>
+            </div>
+
+            <div class="map-toolbar">
+              <div class="map-style-switch" id="styleSwitch">
+                <button class="btn btn-sm active" data-style="light"><i class="fa-solid fa-sun"></i> Light</button>
+                <button class="btn btn-sm" data-style="dark"><i class="fa-solid fa-moon"></i> Dark</button>
+                <button class="btn btn-sm" data-style="satellite"><i class="fa-solid fa-globe"></i> Sat</button>
+              </div>
+              <button class="btn btn-sm" style="background:var(--surface);border:1px solid var(--line-2);color:var(--text-300)" id="locateBtn"><i class="fa-solid fa-crosshairs"></i></button>
+            </div>
+            <div class="route-summary">
+              <div class="rs-item"><strong id="rsDistance">--</strong><span>distance</span></div>
+              <div class="rs-item"><strong id="rsTime">--</strong><span>to regroup</span></div>
+              <div class="rs-item"><strong id="rsSpeed">--</strong><span>avg speed</span></div>
+            </div>
+            <div class="map-legend">
+              <span><i class="lg-dot you"></i>You</span>
+              <span><i class="lg-dot member"></i>Member</span>
+              <span><i class="lg-line"></i>Route</span>
+              <span><i class="lg-dash"></i>Your meet route</span>
+              <span><i class="lg-dot meet"></i>Meet point</span>
+            </div>
+          </div>
+
+          <div class="map-side">
+            <div class="flex-between" style="margin-bottom:8px">
+              <strong style="font-size:.86rem">Group members</strong>
+              <span class="badge badge-green" id="mapOnline"><span class="badge-dot pulse-dot"></span>0</span>
+            </div>
+            <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--line)">
+              <div style="margin-bottom:8px"><strong style="font-size:.78rem;color:var(--text-600)">Your status</strong></div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px" id="mapStatusChips"></div>
+            </div>
+            <div id="memberPins" style="max-height:calc(100vh - 300px);overflow-y:auto"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/firebase.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/mapnav.js"></script>
+</body>
+</html>

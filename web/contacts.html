@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=overlays-content">
+  <title>Emergency contacts — RideSync</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div id="sidebar-root"></div>
+  <div class="app-wrap">
+    <div class="main">
+      <header id="topbar-root"></header>
+      <main class="content">
+        <div class="page-head">
+          <div>
+            <h1>Emergency contacts</h1>
+            <p>People to notify automatically when you hit SOS.</p>
+          </div>
+          <button class="btn btn-primary" id="addContactBtn"><i class="fa-solid fa-plus"></i> Add contact</button>
+        </div>
+
+        <div class="alert alert-info"><i class="fa-solid fa-circle-info"></i><div>Your emergency contacts are notified alongside your group members whenever an SOS alert is triggered.</div></div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3><i class="fa-solid fa-address-book" style="color:var(--accent)"></i> Saved contacts</h3>
+            <span class="badge badge-red" id="contactCount"><span class="badge-dot pulse-dot"></span>0</span>
+          </div>
+          <div class="card-body" style="padding:10px 12px" id="contactsList"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-overlay hidden" id="contactModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h3 id="contactModalTitle">Add contact</h3>
+        <button class="btn btn-icon btn-ghost" id="contactModalClose"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="contactForm">
+        <div class="modal-body">
+          <div class="field">
+            <label class="label" for="cName">Full name</label>
+            <input class="input" type="text" id="cName" placeholder="e.g. Jane Doe">
+          </div>
+          <div class="field">
+            <label class="label" for="cPhone">Phone</label>
+            <div class="input-icon"><i class="fa-solid fa-phone"></i>
+              <input class="input" type="tel" id="cPhone" placeholder="+91 98765 43210">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="cRelation">Relation</label>
+            <select class="select" id="cRelation">
+              <option>Family</option>
+              <option>Friend</option>
+              <option>Service</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <label class="checkbox-row">
+            <input type="checkbox" id="cEmergency">
+            <span style="font-size:.85rem;color:var(--text-300)">Mark as <strong style="color:#fca5a5">emergency</strong> contact</span>
+          </label>
+        </div>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-ghost" id="contactCancel">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save contact</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/firebase.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/emergency.js"></script>
+</body>
+</html>

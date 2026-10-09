@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=overlays-content">
+  <title>RideSync — Your convoy, perfectly in sync</title>
+  <meta name="description" content="RideSync keeps your whole group on the same road. Live maps, group chat, photo drives, expenses and instant SOS — built for road trips and caravans.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <nav class="landing-nav" id="landingNav">
+    <div class="container nav-inner">
+      <a href="#" class="brand">
+        <img src="assets/images/logo.svg" alt="RideSync logo">
+        <span>Ride<span class="grad-text">Sync</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#safety">Safety</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="nav-cta" id="navCta">
+        <a href="login.html" class="btn btn-ghost">Sign in</a>
+        <a href="signup.html" class="btn btn-primary">Get started <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <button class="menu-toggle-land" id="menuToggleLand" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="grid-overlay"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="container hero-grid" style="position:relative">
+      <div class="hero-copy">
+        <div class="hero-badge"><span class="live-dot pulse-dot"></span> Live convoy tracking is on</div>
+        <h1>Your whole crew,<br>perfectly in <span class="grad-text">sync</span>.</h1>
+        <p class="hero-sub">RideSync keeps every rider on the same road — live map, group chat, shared photo drive, split expenses and one-tap SOS. Built for road trips, caravans and group rides.</p>
+        <div class="hero-cta">
+          <a href="signup.html" class="btn btn-primary btn-lg">Create your group <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-trust">
+          <div class="avatar-stack">
+            <div class="avatar sm">JL</div>
+            <div class="avatar sm">MP</div>
+            <div class="avatar sm">RO</div>
+            <div class="avatar sm" style="background:linear-gradient(135deg,#22d3ee,#34d399)">+1k</div>
+          </div>
+          <div>
+            <div class="stars">★★★★★</div>
+            Loved by <strong>12,000+</strong> riders this year
+          </div>
+        </div>
+      </div>
+      <div class="hero-media reveal in">
+        <div class="app-window">
+          <div class="app-window-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="url">app.ridesync.app/sunday-canyon</span>
+          </div>
+          <div class="app-window-body">
+            <div class="mini-map">
+              <span class="road"></span><span class="road"></span><span class="road"></span>
+              <span class="road-v"></span><span class="road-v"></span>
+              <span class="route-line"></span>
+              <span class="map-dot me"></span>
+              <span class="map-dot u1"></span>
+              <span class="map-dot u2"></span>
+              <span class="map-dot u3"></span>
+              <span class="map-dot u4"></span>
+            </div>
+            <div class="float-card fc-loc">
+              <div class="fc-icon icon-cyan"><i class="fa-solid fa-location-crosshairs"></i></div>
+              <div><strong>4 of 5 online</strong><span>Canyon Road, live</span></div>
+            </div>
+            <div class="float-card fc-chat">
+              <div class="fc-icon icon-indigo"><i class="fa-solid fa-comment-dots"></i></div>
+              <div><strong>Jordan: "Rolling now"</strong><span>2m ago · group chat</span></div>
+            </div>
+            <div class="float-card fc-sos">
+              <div class="fc-icon icon-red"><i class="fa-solid fa-siren"></i></div>
+              <div><strong>SOS ready</strong><span>tap to alert crew</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="stats-strip">
+    <div class="container stats-grid">
+      <div class="stat-item"><strong>120k+</strong><span>Trips coordinated</span></div>
+      <div class="stat-item"><strong>2.1M km</strong><span>Driven together</span></div>
+      <div class="stat-item"><strong>45 sec</strong><span>Avg. group setup</span></div>
+      <div class="stat-item"><strong>4.9/5</strong><span>Rider rating</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow"><i class="fa-solid fa-wand-magic-sparkles"></i> Features</div>
+        <h2>Everything a road crew needs, in one app</h2>
+        <p>No more group-text chaos. RideSync turns scattered calls, texts and receipts into one clean, live view of your trip.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card reveal">
+          <div class="icon-box icon-indigo"><i class="fa-solid fa-map-location-dot"></i></div>
+          <h3>Live Group Map</h3>
+          <p>See every member move in real time. Know who's ahead, who's lagging, and exactly where to regroup.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="icon-box icon-cyan"><i class="fa-solid fa-route"></i></div>
+          <h3>Smart Navigation</h3>
+          <p>Turn-by-turn directions with your group's position overlaid. Drive together without getting split up.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="icon-box icon-green"><i class="fa-solid fa-comments"></i></div>
+          <h3>Group Chat</h3>
+          <p>One threaded chat per group with live updates. Road reports, photo drops and "where are you?" — solved.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="icon-box icon-amber"><i class="fa-solid fa-wallet"></i></div>
+          <h3>Split Expenses</h3>
+          <p>Log fuel, tolls and meals. RideSync tracks who paid what so settling up at the end is painless.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="icon-box icon-pink"><i class="fa-solid fa-camera"></i></div>
+          <h3>Photo Drive</h3>
+          <p>A shared album for the trip. Every member's shots land in one place automatically as you ride.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="icon-box icon-red"><i class="fa-solid fa-siren"></i></div>
+          <h3>One-Tap SOS</h3>
+          <p>An emergency alert with your live location pings the whole crew and your saved contacts instantly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how" style="padding-top:40px">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow"><i class="fa-solid fa-flag-checkered"></i> How it works</div>
+        <h2>On the road in under a minute</h2>
+        <p>Three simple steps and your convoy is together.</p>
+      </div>
+      <div class="steps-row">
+        <div class="step-card reveal">
+          <div class="step-ic"><i class="fa-solid fa-user-plus"></i></div>
+          <h3>Create your group</h3>
+          <p>Start a group and RideSync hands you a unique join code to share.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-ic"><i class="fa-solid fa-share-nodes"></i></div>
+          <h3>Invite your crew</h3>
+          <p>Friends enter the code or tap your invite link. Everyone's in, instantly.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-ic"><i class="fa-solid fa-road"></i></div>
+          <h3>Ride together</h3>
+          <p>Go live on the map, chat as you roll, and keep every photo and cost in sync.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="safety" style="padding-top:40px">
+    <div class="container safety-grid">
+      <div class="safety-content reveal">
+        <div class="eyebrow"><i class="fa-solid fa-shield-halved"></i> Safety first</div>
+        <h2>Help is one tap away — for you and your whole crew</h2>
+        <p>When things go sideways, every second counts. RideSync's SOS feature sends your live location and a distress message to the group and your emergency contacts automatically.</p>
+        <div class="safety-list">
+          <div class="safety-item">
+            <div class="icon-box icon-red"><i class="fa-solid fa-location-dot"></i></div>
+            <div><h4>Live location attached</h4><p>First responders and your crew know exactly where you are.</p></div>
+          </div>
+          <div class="safety-item">
+            <div class="icon-box icon-amber"><i class="fa-solid fa-phone-volume"></i></div>
+            <div><h4>Instant group alert</h4><p>Everyone in the group gets pinged the moment you hit SOS.</p></div>
+          </div>
+          <div class="safety-item">
+            <div class="icon-box icon-green"><i class="fa-solid fa-bell"></i></div>
+            <div><h4>Emergency contacts notified</h4><p>Your saved contacts outside the group are notified too.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="safety-visual reveal">
+        <div class="contact-float"><strong>Roadside Assist</strong><span>Alerted · 0:12s ago</span></div>
+        <div class="sos-big">
+          <div class="sos-big-core">
+            <i class="fa-solid fa-siren"></i>
+            <strong>SOS</strong>
+            <span>tap to alert crew</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:30px">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow"><i class="fa-solid fa-heart"></i> Riders love it</div>
+        <h2>Trusted by weekenders and rally crews</h2>
+      </div>
+      <div class="quote-grid">
+        <div class="quote-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"We did a 6-car road trip across three states and never lost anyone. The live map alone is worth it."</p>
+          <div class="q-user">
+            <div class="avatar sm">DH</div>
+            <div><strong>Dana H.</strong><span>Group organizer</span></div>
+          </div>
+        </div>
+        <div class="quote-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Splitting fuel and tolls used to be a nightmare. Now it's all tracked and we settle up in seconds."</p>
+          <div class="q-user">
+            <div class="avatar sm" style="background:linear-gradient(135deg,#f97316,#f43f5e)">MK</div>
+            <div><strong>Marcus K.</strong><span>Monthly rider</span></div>
+          </div>
+        </div>
+        <div class="quote-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"The SOS button gives my family serious peace of mind on long drives. The whole convoy knows instantly."</p>
+          <div class="q-user">
+            <div class="avatar sm" style="background:linear-gradient(135deg,#10b981,#22d3ee)">LT</div>
+            <div><strong>Lena T.</strong><span>Safety-conscious parent</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" style="padding-top:30px">
+    <div class="container" style="max-width:760px">
+      <div class="section-head reveal">
+        <div class="eyebrow"><i class="fa-solid fa-circle-question"></i> FAQ</div>
+        <h2>Questions, answered</h2>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">How does my group stay in sync?<i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">Every member who goes live shares their position to the group map in real time. You see arrivals, delays and exactly where to regroup — no calls needed.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Do I need an account for each member?<i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — each rider signs in with their own account, then joins your group with the unique code. That way location sharing and expenses are tied to the right person.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Is my live location private?<i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">Your location is only shared with members of groups you join, and only while the live map is active. You can go offline or leave a group at any time.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">How does the SOS feature work?<i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">Tapping SOS instantly alerts every group member and your saved emergency contacts with your live location and a distress message, so help finds you faster.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:20px">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <h2>Your next trip deserves to be in sync.</h2>
+        <p>Create a group, rally your crew, and ride together. Free to start.</p>
+        <a href="signup.html" class="btn btn-lg">Create your group <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="brand">
+            <img src="assets/images/logo.svg" alt="RideSync">
+            <span>Ride<span class="grad-text">Sync</span></span>
+          </a>
+          <p>Live convoy tracking, group chat, photo drives, split expenses and one-tap SOS for road trips and group rides.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Product</h5>
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#safety">Safety</a>
+          <a href="login.html">Sign in</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="#">About</a>
+          <a href="#">Blog</a>
+          <a href="#">Contact</a>
+          <a href="#">Careers</a>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Safety Guidelines</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 RideSync. Built for people who drive together.</span>
+        <span><i class="fa-brands fa-x-twitter"></i> &nbsp;<i class="fa-brands fa-instagram"></i> &nbsp;<i class="fa-brands fa-github"></i></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/firebase.js"></script>
+  <script>
+    (function () {
+      var nav = document.getElementById("landingNav");
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 30) nav.classList.add("scrolled");
+        else nav.classList.remove("scrolled");
+      });
+      var tog = document.getElementById("menuToggleLand");
+      var links = document.getElementById("navLinks");
+      var cta = document.getElementById("navCta");
+      tog.addEventListener("click", function () {
+        links.classList.toggle("open");
+        cta.classList.toggle("mobile-open");
+      });
+      links.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          links.classList.remove("open");
+          cta.classList.remove("mobile-open");
+        });
+      });
+      document.querySelectorAll(".faq-q").forEach(function (q) {
+        q.addEventListener("click", function () {
+          var item = q.parentElement;
+          var open = item.classList.contains("open");
+          document.querySelectorAll(".faq-item").forEach(function (i) { i.classList.remove("open"); i.querySelector(".faq-a").style.maxHeight = null; });
+          if (!open) {
+            item.classList.add("open");
+            var a = item.querySelector(".faq-a");
+            a.style.maxHeight = a.scrollHeight + "px";
+          }
+        });
+      });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>

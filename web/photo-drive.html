@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo drive — RideSync</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div id="sidebar-root"></div>
+  <div class="app-wrap">
+    <div class="main">
+      <header id="topbar-root"></header>
+      <main class="content">
+        <div class="page-head">
+          <div>
+            <h1>Photo drive</h1>
+            <p>The group's shared album — every shot in one place.</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-outline" id="uploadBtn"><i class="fa-solid fa-upload"></i> Upload</button>
+          </div>
+        </div>
+
+        <div class="flex-between mb-16" style="flex-wrap:wrap;gap:12px">
+          <div class="nav-pills">
+            <button class="nav-pill active" data-filter="all"><i class="fa-solid fa-layer-group"></i> All photos</button>
+            <button class="nav-pill" data-filter="mine"><i class="fa-solid fa-user"></i> Mine</button>
+          </div>
+          <span class="badge badge-gray" id="photoCount">0 photos</span>
+        </div>
+
+        <div class="photo-grid" id="photoGrid">
+          <div class="skeleton" style="aspect-ratio:1"></div>
+          <div class="skeleton" style="aspect-ratio:1"></div>
+          <div class="skeleton" style="aspect-ratio:1"></div>
+          <div class="skeleton" style="aspect-ratio:1"></div>
+        </div>
+
+        <input type="file" id="photoInput" accept="image/*,video/*" multiple class="hidden">
+        <input type="text" id="captionInput" placeholder="Add a caption…" class="hidden">
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-overlay hidden" id="photoModal">
+    <div class="modal" style="width:min(680px,100%)">
+      <div class="modal-head">
+        <h3 id="photoModalTitle">Photo preview</h3>
+        <button class="btn btn-icon btn-ghost" id="photoModalClose"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <img id="photoPreview" src="" alt="Preview">
+        <video id="photoPreviewVideo" controls style="display:none"></video>
+        <div class="field mt-16" id="captionField" style="margin-bottom:0">
+          <label class="label" for="captionInput2">Caption</label>
+          <input class="input" type="text" id="captionInput2" placeholder="Where was this taken?">
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn btn-ghost" id="photoCancel">Cancel</button>
+        <button class="btn btn-outline" id="photoDownload"><i class="fa-solid fa-download"></i> Download</button>
+        <button class="btn btn-primary" id="photoConfirm"><i class="fa-solid fa-cloud-arrow-up"></i> Upload to drive</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/firebase.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/photos.js"></script>
+</body>
+</html>

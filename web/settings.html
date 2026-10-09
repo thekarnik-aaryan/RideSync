@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=overlays-content">
+  <title>Group settings — RideSync</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div id="sidebar-root"></div>
+  <div class="app-wrap">
+    <div class="main">
+      <header id="topbar-root"></header>
+      <main class="content">
+        <div class="page-head">
+          <div>
+            <h1>Group settings</h1>
+            <p>Manage how your group works.</p>
+          </div>
+        </div>
+
+        <div class="grid-2" style="max-width:900px">
+          <form id="groupSettingsForm">
+            <div class="card card-pad">
+              <div class="card-title mb-16"><i class="fa-solid fa-gear"></i> General</div>
+              <div class="field">
+                <label class="label" for="sGroupName">Group name</label>
+                <input class="input" type="text" id="sGroupName">
+              </div>
+              <div class="field">
+                <label class="label" for="sVehicleType">Vehicle type</label>
+                <select class="select" id="sVehicleType">
+                  <option>Convoy (cars)</option>
+                  <option>Motorcycle group</option>
+                  <option>Bicycle peloton</option>
+                  <option>RV / caravan</option>
+                  <option>Hiking crew</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="label">Your role in this group</label>
+                <div class="alert alert-info" style="margin:0"><i class="fa-solid fa-shield-halved"></i><div id="sMyRole">Loading…</div></div>
+              </div>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+
+          <div>
+            <div class="card card-pad" style="margin-bottom:16px">
+              <div class="card-title mb-16"><i class="fa-solid fa-key"></i> Invite code</div>
+              <p class="small muted mb-16">Share this code so members can join. Rotate it anytime.</p>
+              <div class="flex gap-8">
+                <input class="input" id="sGroupCode" readonly style="font-family:var(--font-head);font-weight:700;letter-spacing:.22em;text-align:center;text-transform:uppercase">
+                <button class="btn btn-outline" id="sRegenCode" type="button"><i class="fa-solid fa-rotate"></i> Rotate</button>
+              </div>
+            </div>
+            <div class="card card-pad">
+              <div class="card-title mb-8" style="color:#fca5a5"><i class="fa-solid fa-triangle-exclamation"></i> Danger zone</div>
+              <p class="small muted mb-16">Leaving removes you from this group. Your data stays with the group.</p>
+              <button class="btn btn-danger btn-block" id="sLeaveGroup" type="button"><i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i> Leave group</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/firebase.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/group.js"></script>
+</body>
+</html>

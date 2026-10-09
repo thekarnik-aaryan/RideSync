@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=overlays-content">
+  <title>Member status — RideSync</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div id="sidebar-root"></div>
+  <div class="app-wrap">
+    <div class="main">
+      <header id="topbar-root"></header>
+      <main class="content">
+        <div class="page-head">
+          <div>
+            <h1>Member status</h1>
+            <p>Set your status — riding, fueling, resting — and see where everyone is right now.</p>
+          </div>
+          <div class="page-actions">
+            <a href="map.html" class="btn btn-accent"><i class="fa-solid fa-map-location-dot"></i> See on map</a>
+          </div>
+        </div>
+
+        <div class="grid-4 mb-24">
+          <div class="card stat-card"><div class="icon-box icon-green" style="width:44px;height:44px"><i class="fa-solid fa-circle-check"></i></div><div class="stat-info"><h4 id="stOnline">0</h4><p>Online</p></div></div>
+          <div class="card stat-card"><div class="icon-box icon-cyan" style="width:44px;height:44px"><i class="fa-solid fa-motorcycle"></i></div><div class="stat-info"><h4 id="stDriving">0</h4><p>Riding</p></div></div>
+          <div class="card stat-card"><div class="icon-box icon-amber" style="width:44px;height:44px"><i class="fa-solid fa-pause"></i></div><div class="stat-info"><h4 id="stAway">0</h4><p>Paused</p></div></div>
+          <div class="card stat-card"><div class="icon-box icon-red" style="width:44px;height:44px"><i class="fa-solid fa-power-off"></i></div><div class="stat-info"><h4 id="stOffline">0</h4><p>Offline</p></div></div>
+        </div>
+
+        <div class="card mb-24">
+          <div class="card-head">
+            <h3><i class="fa-solid fa-person-circle-check" style="color:var(--accent)"></i> Your status</h3>
+            <span class="badge badge-cyan"><i class="fa-solid fa-arrows-rotate" style="margin-right:4px"></i> Tap to update</span>
+          </div>
+          <div class="card-body" style="display:flex;flex-wrap:wrap;gap:10px" id="myStatusChips"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3><i class="fa-solid fa-user-clock" style="color:var(--accent)"></i> Status overview</h3>
+            <span class="badge badge-green"><span class="badge-dot pulse-dot"></span> Live</span>
+          </div>
+          <div class="card-body" style="padding:10px 12px" id="memberStatusList"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/firebase.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/group.js"></script>
+</body>
+</html>

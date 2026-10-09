@@ -1,0 +1,94 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+    function memberPath(uid, gid) {
+      return path('/databases/' + database + '/documents/memberships/' + uid + '_' + gid);
+    }
+    function adminOf(gid) {
+      return exists(memberPath(request.auth.uid, gid))
+        && get(memberPath(request.auth.uid, gid)).data.role == 'admin';
+    }
+    function isMember(gid) {
+      return exists(memberPath(request.auth.uid, gid));
+    }
+    function isCreatorOf(gid) {
+      return exists(/databases/$(database)/documents/groups/$(gid))
+        && get(/databases/$(database)/documents/groups/$(gid)).data.created_by == request.auth.uid;
+    }
+
+    match /profiles/{uid} {
+      allow read: if signedIn();
+      allow write: if signedIn() && request.auth.uid == uid;
+    }
+
+    match /groups/{gid} {
+      allow read: if signedIn() && isMember(gid);
+      allow create: if signedIn();
+      allow update, delete: if signedIn() && adminOf(gid);
+    }
+
+    match /group_codes/{code} {
+      allow read: if signedIn();
+      allow create: if signedIn() && request.resource.data.gid != null
+        && existsAfter(/databases/$(database)/documents/groups/$(request.resource.data.gid));
+      allow update, delete: if signedIn() && adminOf(resource.data.gid);
+    }
+
+    match /memberships/{docId} {
+      allow read: if signedIn() && (resource.data.uid == request.auth.uid || isMember(resource.data.gid));
+      allow create: if signedIn() && request.resource.data.uid == request.auth.uid
+        && existsAfter(/databases/$(database)/documents/groups/$(request.resource.data.gid));
+      allow update: if signedIn() && (
+        adminOf(resource.data.gid)
+        || (resource.data.uid == request.auth.uid && (request.resource.data.role == resource.data.role || isCreatorOf(resource.data.gid)))
+      );
+      allow delete: if signedIn() && (resource.data.uid == request.auth.uid || adminOf(resource.data.gid));
+    }
+
+    match /locations/{docId} {
+      allow read: if signedIn() && isMember(resource.data.gid);
+      allow create, update: if signedIn() && request.resource.data.uid == request.auth.uid;
+      allow delete: if signedIn() && request.resource.data.uid == request.auth.uid;
+    }
+
+    match /presence/{uid} {
+      allow read: if signedIn();
+      allow create, update, delete: if signedIn() && uid == request.auth.uid;
+    }
+
+    match /routes/{gid} {
+      allow read: if signedIn() && isMember(gid);
+      allow create, update, delete: if signedIn() && isMember(gid);
+    }
+
+    match /groups/{gid}/messages/{msgId} {
+      allow read: if signedIn() && isMember(gid);
+      allow create: if signedIn() && isMember(gid) && request.resource.data.uid == request.auth.uid;
+      allow update: if signedIn() && request.resource.data.uid == request.auth.uid;
+      allow delete: if signedIn() && resource.data.uid == request.auth.uid;
+    }
+
+    match /groups/{gid}/photos/{photoId} {
+      allow read: if signedIn() && isMember(gid);
+      allow create: if signedIn() && isMember(gid) && request.resource.data.uid == request.auth.uid;
+      allow update: if signedIn() && request.resource.data.uid == request.auth.uid;
+      allow delete: if signedIn() && resource.data.uid == request.auth.uid;
+    }
+
+    match /groups/{gid}/expenses/{expenseId} {
+      allow read: if signedIn() && isMember(gid);
+      allow create: if signedIn() && isMember(gid) && request.resource.data.uid == request.auth.uid;
+      allow update: if signedIn() && request.resource.data.uid == request.auth.uid;
+      allow delete: if signedIn() && resource.data.uid == request.auth.uid;
+    }
+
+    match /groups/{gid}/alerts/{alertId} {
+      allow read: if signedIn() && isMember(gid);
+      allow create: if signedIn() && isMember(gid) && request.resource.data.uid == request.auth.uid;
+      allow update, delete: if signedIn() && request.resource.data.uid == request.auth.uid;
+    }
+  }
+}

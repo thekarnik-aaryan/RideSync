@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=overlays-content">
+  <title>Join group — RideSync</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div id="sidebar-root"></div>
+  <div class="app-wrap">
+    <div class="main">
+      <header id="topbar-root"></header>
+      <main class="content">
+        <div class="page-head">
+          <div>
+            <h1>Join a group</h1>
+            <p>Enter the code your organizer shared with you.</p>
+          </div>
+        </div>
+
+        <div class="card card-pad" style="max-width:560px">
+          <form id="joinGroupForm" novalidate>
+            <div class="field">
+              <label class="label" for="joinCode">Group code</label>
+              <input class="input" type="text" id="joinCode" placeholder="e.g. RIDE42"
+                style="text-align:center;font-family:var(--font-head);font-size:1.4rem;letter-spacing:.4em;font-weight:700;text-transform:uppercase;padding-left:.4em" maxlength="8">
+              <p class="hint" style="text-align:center">Codes are case-insensitive. Usually 6 characters.</p>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Join group <i class="fa-solid fa-right-to-bracket"></i></button>
+          </form>
+        </div>
+
+        <div class="card card-pad mt-16" style="max-width:560px">
+          <div class="card-title mb-8"><i class="fa-solid fa-lightbulb"></i> Don't have a code?</div>
+          <p class="small muted" style="margin-bottom:14px">Ask your ride organizer for the group code, or start your own convoy and invite friends.</p>
+          <div class="flex gap-8">
+            <a href="create-group.html" class="btn btn-outline btn-sm"><i class="fa-solid fa-plus"></i> Create a group instead</a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/firebase.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/group.js"></script>
+</body>
+</html>

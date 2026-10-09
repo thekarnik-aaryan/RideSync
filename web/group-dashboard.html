@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=overlays-content">
+  <title>Group Dashboard — RideSync</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div id="sidebar-root"></div>
+  <div class="app-wrap">
+    <div class="main">
+      <header id="topbar-root"></header>
+      <main class="content">
+        <div class="page-head">
+          <div class="flex gap-12" style="flex-wrap:wrap">
+            <div class="icon-box icon-indigo" style="width:52px;height:52px;font-size:1.2rem"><i class="fa-solid fa-users"></i></div>
+            <div>
+              <h1 id="groupName">…</h1>
+              <p id="groupMeta">…</p>
+            </div>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-outline" id="copyCodeBtn"><i class="fa-solid fa-copy"></i> Copy code</button>
+            <a href="map.html" class="btn btn-accent"><i class="fa-solid fa-map-location-dot"></i> Go live on map</a>
+          </div>
+        </div>
+
+        <div id="groupStats" class="grid-4">
+          <div class="card stat-card"><div class="icon-box icon-indigo skeleton" style="width:52px;height:52px"></div><div class="stat-info"><h4 class="skeleton" style="width:40px;height:26px"></h4><p>Members</p></div></div>
+          <div class="card stat-card"><div class="icon-box icon-cyan skeleton" style="width:52px;height:52px"></div><div class="stat-info"><h4 class="skeleton" style="width:40px;height:26px"></h4><p>Online now</p></div></div>
+          <div class="card stat-card"><div class="icon-box icon-green skeleton" style="width:52px;height:52px"></div><div class="stat-info"><h4 class="skeleton" style="width:40px;height:26px"></h4><p>Messages</p></div></div>
+          <div class="card stat-card"><div class="icon-box icon-amber skeleton" style="width:52px;height:52px"></div><div class="stat-info"><h4 class="skeleton" style="width:40px;height:26px"></h4><p>Trip expenses</p></div></div>
+        </div>
+
+        <div class="grid-2-1 mt-24">
+          <div>
+            <div class="card mb-16">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-users" style="color:var(--accent)"></i> Members in group</h3>
+                <span id="memberCount" class="badge badge-green"><span class="badge-dot pulse-dot"></span>0</span>
+              </div>
+              <div class="card-body" id="membersList" style="display:flex;flex-direction:column;gap:6px"></div>
+            </div>
+
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-bolt" style="color:#fbbf24"></i> Latest activity</h3>
+                <a href="chat.html" style="font-size:.8rem;color:#a5b4fc;font-weight:600">Open chat <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+              <div class="card-body" id="activityFeed" style="padding:8px 12px"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="card mb-16">
+              <div class="card-head"><h3><i class="fa-solid fa-satellite-dish" style="color:var(--accent)"></i> Trip hub</h3></div>
+              <div class="card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <a href="map.html" class="nav-pill"><i class="fa-solid fa-map-location-dot"></i> Map &amp; Navigation</a>
+                <a href="chat.html" class="nav-pill"><i class="fa-solid fa-comments"></i> Chat</a>
+                <a href="photo-drive.html" class="nav-pill"><i class="fa-solid fa-camera"></i> Photos</a>
+                <a href="expenses.html" class="nav-pill"><i class="fa-solid fa-wallet"></i> Expenses</a>
+                <a href="emergency.html" class="nav-pill" style="border-color:rgba(248,113,113,.4);color:#fca5a5"><i class="fa-solid fa-tower-broadcast"></i> SOS</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-head"><h3><i class="fa-solid fa-key" style="color:var(--success)"></i> Invite crew</h3></div>
+              <div class="card-body">
+                <p class="small muted" style="margin-bottom:12px">Share this code — anyone with it can join your group.</p>
+                <div class="flex gap-8">
+                  <input class="input" id="groupCode" readonly style="text-align:center;font-family:var(--font-head);font-weight:700;letter-spacing:.22em;text-transform:uppercase">
+                  <button class="btn btn-primary" id="copyBtn"><i class="fa-solid fa-copy"></i></button>
+                </div>
+                <div class="mt-16" style="display:flex;justify-content:space-between;align-items:center">
+                  <a href="group-management.html" id="manageLink" style="font-size:.82rem;color:#a5b4fc;font-weight:600">Manage members</a>
+                  <a href="member-status.html" style="font-size:.82rem;color:#a5b4fc;font-weight:600">Member status</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/firebase.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/group.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

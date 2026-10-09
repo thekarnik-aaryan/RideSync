@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=overlays-content">
+  <title>Create group — RideSync</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div id="sidebar-root"></div>
+  <div class="app-wrap">
+    <div class="main">
+      <header id="topbar-root"></header>
+      <main class="content">
+        <div class="page-head">
+          <div>
+            <h1>Create a group</h1>
+            <p>Spin up your convoy in seconds and share one code.</p>
+          </div>
+        </div>
+
+        <div class="grid-2" style="max-width:900px">
+          <div class="card card-pad">
+            <div class="steps" style="margin-bottom:28px">
+              <div class="step-item active"><span class="step-num">1</span> Details</div>
+              <div class="step-line"></div>
+              <div class="step-item"><span class="step-num">2</span> Invite crew</div>
+              <div class="step-line"></div>
+              <div class="step-item"><span class="step-num">3</span> Ride!</div>
+            </div>
+            <form id="createGroupForm" novalidate>
+              <div class="field">
+                <label class="label" for="groupName">Group name <span>*</span></label>
+                <input class="input" type="text" id="groupName" placeholder="e.g. Sunday Canyon Trip" maxlength="50">
+                <p class="hint"></p>
+              </div>
+              <div class="field">
+                <label class="label" for="vehicleType">What are you riding?</label>
+                <select class="select" id="vehicleType">
+                  <option value="Convoy">Convoy (cars)</option>
+                  <option value="Motorcycle">Motorcycle group</option>
+                  <option value="Bicycle">Bicycle peloton</option>
+                  <option value="RV">RV / caravan</option>
+                  <option value="Hiking">Hiking crew</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="label" for="destination">Destination (optional)</label>
+                <div class="input-icon">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <input class="input" type="text" id="destination" placeholder="e.g. Red Rock Canyon">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">Create group <i class="fa-solid fa-arrow-right"></i></button>
+            </form>
+          </div>
+          <div>
+            <div class="card card-pad" style="margin-bottom:16px">
+              <div class="card-title mb-16"><i class="fa-solid fa-key"></i> Your invite code</div>
+              <div style="text-align:center;padding:18px 0">
+                <div id="previewCode" style="font-family:var(--font-head);font-size:2.2rem;font-weight:800;letter-spacing:.28em;background:var(--grad-accent);-webkit-background-clip:text;background-clip:text;color:transparent;padding-left:.28em">••••••</div>
+                <p class="small muted mt-8">Auto-generated when you create the group. Members use it to join.</p>
+              </div>
+              <div class="flex" style="justify-content:center;gap:12px">
+                <a href="join-group.html" class="btn btn-outline btn-sm">How joining works</a>
+              </div>
+            </div>
+            <div class="card card-pad">
+              <div class="card-title mb-16"><i class="fa-solid fa-circle-info"></i> Tips</div>
+              <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;font-size:.87rem;color:var(--text-500)">
+                <li><i class="fa-solid fa-check text-success" style="margin-right:8px"></i>Keep the name clear so everyone recognizes the trip.</li>
+                <li><i class="fa-solid fa-check text-success" style="margin-right:8px"></i>Share the code once — members can re-join anytime.</li>
+                <li><i class="fa-solid fa-check text-success" style="margin-right:8px"></i>You'll be the group admin and can manage members.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/firebase.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/group.js"></script>
+</body>
+</html>
