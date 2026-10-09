@@ -82,6 +82,3 @@ The hosting configuration serves the `web/` directory. Review the security rules
 - [ ] Do not commit private credentials, local config overrides, logs, or Firebase CLI state.
 - [ ] Test authentication, group membership, location privacy, uploads, and emergency flows with multiple accounts.
 
-## License
-
-No license has been specified yet. Add a `LICENSE` file if you want to grant others explicit permission to reuse or modify this project.
