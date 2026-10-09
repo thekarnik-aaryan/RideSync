@@ -1,6 +1,6 @@
 # RideSync
 
-RideSync is a browser-based group riding and biker-safety app for coordinating trips. It includes group management, live location features, navigation, group chat, photo sharing, shared expenses, emergency contacts, and SOS alerts.
+RideSync is a browser-based group riding and biker-safety app for coordinating trips. It includes group management, **group live location features**, **group navigation**, group chat, photo sharing, shared expenses, emergency contacts, and SOS alerts.
 
 ## Features
 
